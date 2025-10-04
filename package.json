@@ -4,6 +4,9 @@
   "description": "웹 기반 알골 키우기 게임의 클라이언트 프로토타입입니다. 깃허브 계정으로 로그인하면 알고냥이의 생활 공간으로 진입해 밥을 주고, 청소하고, 함께 시간을 보낼 수 있습니다.",
   "main": "script.js",
   "scripts": {
+    "dev": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "preview": "npm --prefix client run preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var connectHistoryApiFallbsck = require('connect-history-api-fallback');
+var connectHistoryApiFallback = require('connect-history-api-fallback');
 
 var indexRouter = require('./routes/index');
 const github = require('./routes/github');
@@ -11,11 +11,27 @@ const github = require('./routes/github');
 var app = express();
 
 const cors = require('cors');
-app.use(cors({origin:"http://localhost:3000"}));
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:4173',
+  'http://localhost:3000',
+];
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+  })
+);
 
 // view engine setup
 app.set('view engine', 'html');
-app.use(connectHistoryApiFallbsck())
+app.use(connectHistoryApiFallback());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
