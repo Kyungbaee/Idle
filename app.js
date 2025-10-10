@@ -1,3 +1,9 @@
+try {
+  require('dotenv').config();
+} catch (error) {
+  console.warn('dotenv not installed; skipping .env loading');
+}
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -55,7 +61,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-  console.log(req.session)
+  console.log(req.session);
 });
 
 module.exports = app;
