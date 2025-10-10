@@ -2,6 +2,12 @@
 
 웹 기반 알골 키우기 게임의 클라이언트 프로토타입입니다. 깃허브 계정으로 로그인하면 알고냥이의 생활 공간으로 진입해 밥을 주고, 청소하고, 함께 시간을 보낼 수 있습니다.
 
+## 최근 작업 요약
+
+- GitHub OAuth 인증을 처리하는 전용 라우터(`routes/github.js`)를 추가하여 로그인, 콜백, 사용자 정보 조회 엔드포인트를 구성했습니다.
+- Express 앱 초기 구동 시 `dotenv`를 통해 GitHub OAuth 클라이언트 설정을 불러오도록 구성했습니다.
+- 필수 GitHub OAuth 환경 변수(`GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GITHUB_REDIRECT_URI`)를 `.env.example`에 명시했습니다.
+
 ## 주요 기능
 
 - **GitHub 로그인**: 깃허브 OAuth 버튼으로 로그인하면 캐릭터 방으로 입장합니다. 데모 모드 버튼으로는 계정 없이 체험할 수 있습니다.
